@@ -1,0 +1,65 @@
+body {
+
+background-color: rgba(50, 125, 235, 0.5);
+
+}
+.grid-container {
+
+display: grid;
+grid-gap: 2.5px;
+grid-template-areas:
+
+"header header"
+"main main"
+"footer footer"
+;
+
+}
+
+.grid-item{
+
+background-color: rgba(15,35,30,0.5);
+text-align: center;
+
+}
+
+.header{
+
+grid-area: header;
+
+}
+
+.main{
+
+grid-area: main;
+
+}
+
+#choice-block{
+
+margin: 15%;
+
+}
+#student-log-in{
+
+size: 50%;
+}
+#teacher-log-in{
+
+size: 50%;
+}
+
+.footer {
+
+grid-area: footer;
+justify-content: space-between;
+align-items: center;
+color: white;
+
+}
+.footer a{
+
+color: gold;
+
+}
+
