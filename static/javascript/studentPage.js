@@ -1,13 +1,15 @@
-const studentLogIn = document.querySelector("button#student-log-in");
-const teacherLogIn = document.querySelector("button#teacher-log-in");
+const studentUserName = document.querySelector("input#student_user_name");
+const studentPassword = document.querySelector("input#student_password");
 
-studentLogIn.addEventListener("click",turnStudentPage);
-teacherLogIn.addEventListener("click",turnTeacherPage);
+if(studentUserName === 1 || studentPassword === 2){
 
-function turnStudentPage(){
+alert("Login Successfully!");
+
+}
+
+else{
+
+alert("Wrong Password or username, Please enter again.");
 
 }
 
-function turnTeacherPage(){
-
-}
