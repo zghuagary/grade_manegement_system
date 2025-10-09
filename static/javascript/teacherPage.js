@@ -1,13 +1,20 @@
-const studentLogIn = document.querySelector("button#student-log-in");
-const teacherLogIn = document.querySelector("button#teacher-log-in");
+const teacherUserName = document.querySelector("input#teacher_user_name");
+const teacherPassword = document.querySelector("input#teacher_password");
+const submitButton = document.querySelector("button#submit_btn");
 
-studentLogIn.addEventListener("click",turnStudentPage);
-teacherLogIn.addEventListener("click",turnTeacherPage);
+submitButton.addEventListener("click",distinguishInfo);
 
-function turnStudentPage(){
+function distinguishInfo(){
+    
+if(teacherUserName.value === "1" && teacherPassword.value === "2"){
+
+alert("Login Successfully!");
 
 }
 
-function turnTeacherPage(){
+else{
 
-}
+alert("Wrong Password or username, Please enter again.");
+
+};
+};
