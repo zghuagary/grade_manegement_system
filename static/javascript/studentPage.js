@@ -14,7 +14,7 @@ alert("Login Successfully!");
 
 else{
 
-alert("Wrong Password or username, Please enter again.");
+alert("錯誤的密碼或學號，請再輸入一次!");
 
 };
 };
