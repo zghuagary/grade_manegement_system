@@ -1,15 +1,15 @@
-body {
+body{
 
-background-color: rgba(50, 125, 235, 0.5);
+background-color:rgba(128, 128, 188,0.7);
 
 }
+
 .grid-container {
 
 display: grid;
 grid-gap: 2.5px;
 grid-template-areas:
 
-"header header"
 "main main"
 "footer footer"
 ;
@@ -18,14 +18,15 @@ grid-template-areas:
 
 .grid-item{
 
-background-color: rgba(15,35,30,0.5);
+margin:10% 10% 3.5% 10%;
 text-align: center;
+/*border: solid 2.5px black;*/
 
 }
 
-.header{
+#heading{
 
-grid-area: header;
+font-size: 305%;
 
 }
 
@@ -35,12 +36,60 @@ grid-area: main;
 
 }
 
+#input-block
+{
+
+display: flex;
+flex-wrap: wrap;
+flex-direction: column;
+align-items: center;
+gap: 2.5%
+
+}
+
+#student_user_name{
+
+border: solid 1.25px black;
+margin:0.25%;
+width:25%;
+height:4em
+
+}
+#student_user_name::placeholder{
+
+font-size: 225%;
+
+}
+
+#student_password{
+
+border: solid 1.25px black;
+margin:0.25%;
+width:25%;
+height:4em
+
+}
+#student_password::placeholder{
+
+font-size: 225%;
+
+}
+
+#submit_btn{
+
+border:solid 2.5px black;
+border-radius: 5%;
+font-size:205%
+
+}
+
 .footer {
 
 grid-area: footer;
+font-size: 17%;
 justify-content: space-between;
 align-items: center;
-color: white;
+color: black;
 
 }
 .footer a{
