@@ -6,15 +6,15 @@ submitButton.addEventListener("click",distinguishInfo);
 
 function distinguishInfo(){
     
-if(teacherUserName.value === "1" && teacherPassword.value === "2"){
+if(teacherUserName.value === "教師1" && teacherPassword.value === "12345"){
 
-alert("Login Successfully!");
+alert("登入成功!");
 
 }
 
 else{
 
-alert("Wrong Password or username, Please enter again.");
+alert("錯誤的密碼或學號，請再輸入一次!");
 
 };
 };

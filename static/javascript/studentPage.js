@@ -8,13 +8,13 @@ function distinguishInfo(){
     
 if(studentUserName.value === "1" && studentPassword.value === "2"){
 
-alert("Login Successfully!");
+alert("登入成功!");
 
 }
 
 else{
 
-alert("錯誤的密碼或學號，請再輸入一次!");
+alert("錯誤的密碼或名稱，請再輸入一次!");
 
 };
 };
