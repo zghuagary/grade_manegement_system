@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS student;
 
 CREATE TABLE student(
 
-id PRIMARY KEY,
+student_id PRIMARY KEY,
 student_name text,
 student_grade
 
