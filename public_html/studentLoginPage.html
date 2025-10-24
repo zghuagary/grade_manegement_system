@@ -1,29 +1,25 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 
 <meta charset = "UTF-8">
-<link rel = "stylesheet" href="/static/css/home.css">
+<link rel = "stylesheet" href="/static/css/studentLoginPage.css">
 <link rel = "icon" href = "data:,">
+<title>學生登入頁</title>
 
 </head>
 <body>
 <div class = "grid-container">
 
-<div class = "grid-item header">
-
-</div>
-
 <div class = "grid-item main">
-<h1 id = "heading">成績查詢系統</h1>
-
-<div id = "choice-block">
 
 
-<button id = "student-log-in">學生登入</button>
-<button id = "teacher-log-in">教師登入</button>
+<div id="input-block">
 
+<h1 id = "heading">學生登入</h1>
+<input type = "text" placeholder = "請輸入學號" id = "student_user_name"><br>
+<input type = "password" placeholder = "請輸入密碼" id = "student_password"><br>
+<button id="submit_btn">確認</button>
 </div>
 
 </div>
@@ -45,8 +41,7 @@
 
 </div>
 
-
 </body>
 
-<script src = "/static/javascript/home.js"></script>
+<script src = "/static/javascript/studentLoginPage.js"></script>
 </html>

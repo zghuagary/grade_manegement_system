@@ -6,12 +6,12 @@ teacherLogIn.addEventListener("click",turnTeacherPage);
 
 function turnStudentPage(){
 
-window.location.href="/studentPage.html"
+window.location.href="/studentLoginPage.html"
 
 }
 
 function turnTeacherPage(){
 
-window.location.href="/teacherPage.html"
+window.location.href="/teacherLoginPage.html"
 
 }

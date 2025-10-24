@@ -22,6 +22,13 @@ text-align: center;
 
 }
 
+#heading{
+
+font-size: 305%;
+
+}
+
+
 .main{
 
 grid-area: main;
@@ -33,17 +40,39 @@ grid-area: main;
 
 display: flex;
 flex-wrap: wrap;
-flex-direction: row;
-justify-content: center;
-gap: 12.5%
+flex-direction: column;
+align-items: center;
+gap: 2.5%
 
 }
 
+#teacher_user_name{
+
+border: solid 1.25px black;
+margin:0.25%;
+width:25%;
+height:4em
+
+}
+
+#teacher_user_name::placeholder{font-size: 225%;}
+
+#teacher_password{
+
+border: solid 1.25px black;
+margin:0.25%;
+width:25%;
+height:4em
+
+}
+
+#teacher_password::placeholder{font-size: 225%;}
+
 #submit_btn{
 
-font-size: 150%;
-width:15%;
-height:10em
+border:solid 2.5px black;
+border-radius: 5%;
+font-size:205%
 
 }
 
