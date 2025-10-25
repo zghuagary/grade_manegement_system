@@ -16,8 +16,9 @@
     "url": "https://github.com/zghuagary/grade_manegement_system/issues"
   },
   "homepage": "https://github.com/zghuagary/grade_manegement_system#readme",
-  "description": "",
   "dependencies": {
-    "express": "^5.1.0"
-  }
+    "express": "^5.1.0",
+    "sqlite3": "^5.1.7"
+  },
+  "description": ""
 }
