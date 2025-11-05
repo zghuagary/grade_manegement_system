@@ -9,7 +9,7 @@ function distinguishInfo(){
 if(studentUserName.value === "1" && studentPassword.value === "2"){
 
 alert("登入成功!");
-window.location.href = "/studentPage.html";
+
 
 }
 

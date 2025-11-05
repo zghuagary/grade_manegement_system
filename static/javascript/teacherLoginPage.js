@@ -9,7 +9,6 @@ function distinguishInfo(){
 if(teacherUserName.value === "t1" && teacherPassword.value === "12345"){
 
 alert("登入成功!");
-window.location.href = "/teacherPage.html";
 
 }
 
