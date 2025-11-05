@@ -15,7 +15,7 @@ window.location.href = "/teacherPage.html";
 
 else{
 
-alert("錯誤的密碼或學號，請再輸入一次!");
+alert("錯誤的密碼或帳號名，請再輸入一次!");
 
 };
 };
