@@ -1,14 +1,16 @@
-const express = require("express")();
+const express = require("express");
 const bodyParase = require("body-parser");
-const sqlite3 = require("sqlite3").verbose;
+const sqlite3 = require("sqlite3").verbose();
+const path = require("path");
 const cors = require("cors");
 
 const app = express();
 
-app.use(cors());
-app.use(bodyParase.json());
+app.use(cors({ origin: "*" }));
 
-const db = new sqlite3.Database("/sql/index.db");
+app.use(bodyParase.json());
+const dbPath = path.join(__dirname, "sql", "index.db");
+const db = new sqlite3.Database(dbPath)
 
 app.post("/login", (req,res)=>{
 
@@ -30,10 +32,9 @@ res.json({success: true, message: "登入成功"});
 
 else{
 
-res.json({success: true, message: "帳號或密碼錯誤"});
+res.json({success: false, message: "帳號或密碼錯誤"});
 
 }
-
 
 })
 
