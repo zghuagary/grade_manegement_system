@@ -10,7 +10,7 @@ const studentPassword = document.querySelector("input#student_password").value;
 
 try{
 
-const res = await fetch("https://www.gradesquery.x10.mx/login",{
+const res = await fetch("http://localhost:5004/login",{
 method: "POST",
 headers: {"Content-Type": "application/json"},
 body: JSON.stringify({student_name: studentUserName, student_password: studentPassword})

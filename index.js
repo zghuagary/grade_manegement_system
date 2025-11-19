@@ -1,5 +1,5 @@
 const express = require("express");
-const bodyParase = require("body-parser");
+const bodyParser = require("body-parser");
 const sqlite3 = require("sqlite3").verbose();
 const path = require("path");
 const cors = require("cors");
@@ -8,7 +8,7 @@ const app = express();
 
 app.use(cors({ origin: "*" }));
 
-app.use(bodyParase.json());
+app.use(bodyParser.json());
 const dbPath = path.join(__dirname, "sql", "index.db");
 const db = new sqlite3.Database(dbPath)
 
@@ -39,6 +39,9 @@ res.json({success: false, message: "帳號或密碼錯誤"});
 })
 
 })
+
+app.get("/", (req,res)=> res.send("Server is running!"));
+
 
 app.listen(5004,()=>{console.log("Running")})
 
