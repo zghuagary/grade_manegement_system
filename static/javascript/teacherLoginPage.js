@@ -1,20 +1,35 @@
-const teacherUserName = document.querySelector("input#teacher_user_name");
-const teacherPassword = document.querySelector("input#teacher_password");
+const form = document.querySelector("form#input-block")
 const submitButton = document.querySelector("button#submit_btn");
 
-submitButton.addEventListener("click",distinguishInfo);
+form.addEventListener("submit",login);
 
-function distinguishInfo(){
-    
-if(teacherUserName.value === "t1" && teacherPassword.value === "12345"){
+async function login(e){
+e.preventDefault();
+const teacherUserName = document.querySelector("input#teacher_user_name").value;
+const teacherPassword = document.querySelector("input#teacher_password").value;
+
+try{
+
+const res = await fetch("https://www.gradesquery.x10.mx/login",{
+method: "POST",
+headers: {"Content-Type": "application/json"},
+body: JSON.stringify({teacher_name: teacherUserName, teacher_password: teacherPassword})
+
+});
+
+const data = await res.json();
+
+if(data.success){
 
 alert("登入成功!");
-
+}
+else{
+alert(data.message || "帳號或密碼錯誤");
 }
 
-else{
+} catch(err){
+    console.error(err);
+    alert("伺服器連線失敗");
+}
 
-alert("錯誤的密碼或帳號名，請再輸入一次!");
-
-};
 };
