@@ -4,31 +4,19 @@ const queryRankingBtn = document.querySelector("button#query_ranking_btn")
 queryGradeBtn.addEventListener("click",displayGrade);
 queryRankingBtn.addEventListener("click", displayRanking)
 
-const studentData = {
+async function displayGrade(){
+    const token = localStorage.getItem("token");
 
-gradeDataExists: true,
-rankingDataExists: true
+    const res = await fetch("https://www.gradesquery.x10.mx/scores", {
+        headers: { 
+            "Authorization": "Bearer " + token
+        }
+    });
 
-};
-
-function displayGrade(){
-i = 0
-while(i < 1){
-
-if(studentData.gradeDataExists === true){
-alert("六十分!");
-i++;
-console.log(i);
-
-};}
+    const data = await res.json();
+    console.log("你的成績：", data);
+    alert("已取得成績！請查看 console。");
 }
+
 function displayRanking(){
-if(studentData.rankingDataExists === true){
-
-alert("第八名!");
-i++;
-
-};
-
-
 }

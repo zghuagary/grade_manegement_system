@@ -13,6 +13,11 @@ teacher_name TEXT UNIQUE NOT NULL,
 teacher_password TEXT NOT NULL
 );
 
+CREATE TABLE scores_ranks(
+student_id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+);
+
 INSERT INTO student_login(student_name,student_password) VALUES('Student1','12345');
 INSERT INTO student_login(student_name,student_password) VALUES('Student2','12345');
 INSERT INTO student_login(student_name,student_password) VALUES('Student3','12345');
