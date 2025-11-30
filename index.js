@@ -40,7 +40,7 @@ db.get("SELECT * FROM student_login WHERE student_name = ? AND student_password=
         }
 
         if (student_row) {
-            const token = jwt.sign({ student_id: student_row.student_id, role:"student" }, "SECRET_KEY");
+            const token = jwt.sign({ student_id: student_row.id, role:"student" }, "SECRET_KEY");
             return res.json({
                 success: true,
                 token,
@@ -57,10 +57,10 @@ db.get("SELECT * FROM student_login WHERE student_name = ? AND student_password=
             }
 
             if (teacher_row) {
+                const token = jwt.sign({ teacher_id: teacher_row.teacher_id, role:"teacher" }, "SECRET_KEY");
                 return res.json({ 
                     success: true, 
-                    role: "teacher",
-                    teacher_id: teacher_row.teacher_id,
+                    token,
                     message: "老師登入成功" });
             }
             

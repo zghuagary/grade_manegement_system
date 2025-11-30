@@ -22,6 +22,8 @@ const data = await res.json();
 if(data.success){
 
 alert("登入成功!");
+localStorage.setItem("token", data.token);
+window.locaition.href = "/"
 }
 else{
 alert(data.message || "帳號或密碼錯誤");
