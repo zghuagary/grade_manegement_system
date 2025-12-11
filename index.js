@@ -23,7 +23,7 @@ function authenticateToken(req, res, next) {
     jwt.verify(token, "SECRET_KEY", (err, user) => {
         if (err) return res.status(403).json({ message: "token 無效" });
 
-        req.user = user; // 把解析後的 student_id 存起來
+        req.user = user;
         next();
     });
 }
@@ -64,14 +64,14 @@ db.get("SELECT * FROM student_login WHERE student_name = ? AND student_password=
                     message: "老師登入成功" });
             }
             
-            // 3. If BOTH fail
+        
             res.json({ success: false, message: "帳號或密碼錯誤" });
         });
     });
 });
 
 app.get("/scores", authenticateToken, (req, res) => {
-    const student_id = req.user.student_id; // 從 token 得到
+    const student_id = req.user.student_id;
 
     db.all(
         "SELECT * FROM scores WHERE student_id = ?",
