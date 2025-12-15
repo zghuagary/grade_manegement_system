@@ -10,20 +10,24 @@ const studentPassword = document.querySelector("input#student_password").value;
 
 try{
 
-fetch("https://www.gradesquery.x10.mx/login",{
+const res = await fetch("https://www.gradesquery.x10.mx/login",{
 method: "POST",
 headers: {"Content-Type": "application/json"},
 body: JSON.stringify({student_name: studentUserName, student_password: studentPassword})
 
-}).then(res => res.json())
-.then(data => {
-    if (data.success) {
-        localStorage.setItem("token", data.token); 
-        window.location.href = "/studentPage.html";
-    } else {
-        alert("登入失敗: " + data.message);
-    }
-});;
+});
+
+const data = await res.json();
+
+if(data.success){
+
+alert("登入成功!");
+localStorage.setItem("token", data.token);
+window.location.href = "/studentPage.html"
+}
+else{
+alert(data.message || "帳號或密碼錯誤");
+}
 
 } catch(err){
     console.error(err);
