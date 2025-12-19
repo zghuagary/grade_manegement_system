@@ -5,19 +5,3 @@ const updateGrade = document.querySelector("button#update_grade");
 addGrade.addEventListener("click",displayAddition);
 deleteGrade.addEventListener("click",displayDeletion);
 updateGrade.addEventListener("click",displayUpdation);
-
-function displayAddition(){
-
-}
-
-function displayDeletion(){
-
-
-    
-}
-
-function displayUpdation(){
-
-
-
-}

@@ -14,6 +14,7 @@ const dbPath = path.join(__dirname, "sql", "index.db");
 console.log("Database path being used:", dbPath);
 const db = new sqlite3.Database(dbPath)
 
+
 function authenticateToken(req, res, next) {
     const authHeader = req.headers["authorization"];
     const token = authHeader && authHeader.split(" ")[1];
@@ -23,10 +24,11 @@ function authenticateToken(req, res, next) {
     jwt.verify(token, "SECRET_KEY", (err, user) => {
         if (err) return res.status(403).json({ message: "token 無效" });
 
-        req.user = user; // 把解析後的 student_id 存起來
+        req.user = user; 
         next();
     });
-}
+};
+
 
 app.post("/login", (req,res)=>{
 
@@ -57,21 +59,21 @@ db.get("SELECT * FROM student_login WHERE student_name = ? AND student_password=
             }
 
             if (teacher_row) {
-                const token = jwt.sign({ teacher_id: teacher_row.teacher_id, role:"teacher" }, "SECRET_KEY");
+                const token = jwt.sign({ teacher_id: teacher_row.id, role:"teacher" }, "SECRET_KEY");
                 return res.json({ 
                     success: true, 
                     token,
                     message: "老師登入成功" });
             }
             
-            // 3. If BOTH fail
+        
             res.json({ success: false, message: "帳號或密碼錯誤" });
         });
     });
 });
 
 app.get("/scores", authenticateToken, (req, res) => {
-    const student_id = req.user.student_id; // 從 token 得到
+    const student_id = req.user.student_id;
 
     db.all(
         "SELECT * FROM scores WHERE student_id = ?",

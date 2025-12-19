@@ -23,7 +23,7 @@ if(data.success){
 
 alert("登入成功!");
 localStorage.setItem("token", data.token);
-window.locaition.href = "/"
+window.location.href = "/teacherPage.html"
 }
 else{
 alert(data.message || "帳號或密碼錯誤");

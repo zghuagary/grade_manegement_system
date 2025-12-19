@@ -1,5 +1,6 @@
 const queryGradeBtn = document.querySelector("button#query_grade_btn");
 const queryRankingBtn = document.querySelector("button#query_ranking_btn")
+const displayGrades = document.querySelector("p#grade_display");
 
 queryGradeBtn.addEventListener("click",displayGrade);
 queryRankingBtn.addEventListener("click", displayRanking)
@@ -14,8 +15,10 @@ async function displayGrade(){
     });
 
     const data = await res.json();
-    console.log("你的成績：", data);
-    alert("已取得成績！請查看 console。");
+    data.forEach(items => {
+        console.log(items.course_name+items.score)
+    });
+    
 }
 
 function displayRanking(){
