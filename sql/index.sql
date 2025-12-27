@@ -54,11 +54,11 @@ INSERT INTO students (student_id, student_name, class) VALUES
 (2, 'Student2', 'A班'),
 (3, 'Student3', 'B班');
 
-INSERT INTO scores (student_id, course_name, score, semester) VALUES
-(1, '國文', 90, '114-1'),
-(1, '數學', 85, '114-1'),
-(2, '國文', 78, '114-1'),
-(2, '數學', 95, '114-1'),
+INSERT INTO scores (student_id, course_name, score) VALUES
+(1, '國文', 90),
+(1, '數學', 85),
+(2, '國文', 78),
+(2, '數學', 95),
 
 INSERT INTO scores_ranks (student_id, average_score, class_rank, school_rank) VALUES
 (1, 87.5, 2, 3),

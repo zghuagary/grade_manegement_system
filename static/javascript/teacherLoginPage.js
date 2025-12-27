@@ -10,7 +10,7 @@ const teacherPassword = document.querySelector("input#teacher_password").value;
 
 try{
 
-const res = await fetch("https://www.gradesquery.x10.mx/login",{
+const res = await fetch("https://www.gradesquery2.x10.mx/login",{
 method: "POST",
 headers: {"Content-Type": "application/json"},
 body: JSON.stringify({teacher_name: teacherUserName, teacher_password: teacherPassword})
