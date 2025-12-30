@@ -29,6 +29,12 @@ function authenticateToken(req, res, next) {
     });
 };
 
+function authorizeTeacher(req, res, next) {
+    if (req.user.role !== "teacher") {
+        return res.status(403).json({ message: "權限不足，僅限教師操作" });
+    }
+    next();
+}
 
 app.post("/login", (req,res)=>{
 
@@ -84,6 +90,58 @@ app.get("/scores", authenticateToken, (req, res) => {
         }
     )
 });
+
+app.get("/rank", authenticateToken, (req, res) => {
+    const student_id = req.user.student_id;
+
+    db.all(
+        "SELECT * FROM scores_ranks WHERE student_id = ?",
+        [student_id],
+        (err, rows) => {
+            if (err) return res.status(500).json({ message: "伺服器錯誤" });
+            res.json(rows);
+        }
+    )
+});
+
+app.post("/scores", authenticateToken, authorizeTeacher, (req, res) => {
+    const { student_id, course_name, score } = req.body;
+
+    db.run(
+        "INSERT INTO scores (student_id, course_name, score) VALUES (?, ?, ?)",
+        [student_id, course_name, score],
+        function (err) {
+            if (err) {
+                return res.status(400).json({ message: "該科目成績已存在或資料錯誤" });
+            }
+            res.json({ success: true, id: this.lastID });
+        }
+    );
+});
+
+app.put("/scores/:id", authenticateToken, authorizeTeacher, (req, res) => {
+    db.run(
+        "UPDATE scores SET score = ? WHERE id = ?",
+        [req.body.score, req.params.id],
+        function (err) {
+            res.json({ success: this.changes > 0 });
+        }
+    );
+});
+
+app.delete("/scores/:id", authenticateToken, authorizeTeacher, (req, res) => {
+    db.run(
+        "DELETE FROM scores WHERE id = ?",
+        [req.params.id],
+        function (err) {
+            res.json({ success: this.changes > 0 });
+        }
+    );
+});
+
+
+
+
 
 
 
