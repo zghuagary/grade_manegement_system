@@ -23,7 +23,8 @@ CREATE TABLE students(
 DROP TABLE IF EXISTS scores;
 CREATE TABLE scores(
     student_id INTEGER NOT NULL,            
-    course_name TEXT NOT NULL,              
+    course_name TEXT NOT NULL,
+    course_id TEXT NOT NULL,              
     score REAL NOT NULL,                                   
     
     UNIQUE (student_id, course_name), 
@@ -52,13 +53,15 @@ INSERT INTO students (student_id, student_name, class) VALUES
 (1, 'Student1', 'A班'),
 (2, 'Student2', 'A班');
 
-INSERT INTO scores (student_id, course_name, score) VALUES
-(1, '國文', 90),
-(1, '數學', 85),
-(2, '國文', 78),
-(2, '數學', 95);
+INSERT INTO scores (student_id, course_name, course_id, score) VALUES
+(1, '國文', '01', 90),
+(1, '英文', '02', 85),
+(1, '數學', '03', 85),
+(2, '國文', '01', 78),
+(2, '數學', '03', 95);
 
 INSERT INTO scores_ranks (student_id, average_score, class_rank, school_rank) VALUES
 (1, 87.5, 2, 3),
 (2, 86.5, 3, 4);
 
+SELECT * FROM scores;

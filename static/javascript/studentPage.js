@@ -1,6 +1,7 @@
 const queryGradeBtn = document.querySelector("button#query_grade_btn");
 const queryRankingBtn = document.querySelector("button#query_ranking_btn")
 const displayGrades = document.querySelector("p#grade_display");
+
 const gradeDiv = document.querySelector("div#grade_div");
 const rankDiv = document.querySelector("div#avg_and_rank_div");
 
