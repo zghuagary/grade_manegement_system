@@ -11,12 +11,189 @@
 <body>
 <div class = "grid-container">
 
-<div class = "grid-item main">
-<div id="input-block">
+<div class = "grid-item header">
 
-<button id = "add_grade">新增成績資料</button>
-<button id = "delete_grade">刪除成績資料</button>
-<button id = "update_grade">更新成績資料</button>
+<div id = "header-bg">
+<h1>成績修改</h1>
+</div>
+
+</div>
+
+<div class = "grid-item student-side ">
+
+<form id="queryScoreForm">
+    <label>
+        學年：
+        <select id="school-year" required>
+
+            <option value="">請選擇學年</option>
+            <option value="1">一年級</option>
+            <option value="2">二年級</option>
+            <option value="2">三年級</option>
+
+        </select>
+
+        班級：
+        <select id="school-class" required>
+
+            <option value="">請選擇班級</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+
+        </select>
+
+        <button id="check-submit">查詢</button>
+        
+    </label>
+</form>
+
+<table id="score-table" border="1">
+    <thead>
+        <tr>
+            <th>班級</th>
+            <th>ID</th>
+            <th>座號</th>
+            <th>姓名</th>
+            <th>國文</th>
+            <th>英文</th>
+            <th>數學</th>
+            <th>物理</th>
+            <th>生物</th>
+            <th>化學</th>
+            <th>平均</th>
+            <th>班排</th>
+            <th>校排</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+
+</div>
+
+<div class = "grid-item side-main ">
+
+<div id = "justify_grade_div">
+
+<form id="addScoreForm">
+
+    <label>
+        學生：
+        <select id="add_student_id" required>
+
+            <option value="">請選擇學生</option>
+            <option value="1">Student1</option>
+            <option value="2">Student2</option>
+            <option value="3">Student3</option>
+            <option value="4">Student4</option>
+
+        </select>
+    </label>
+
+    <br><br>
+
+    <label>
+        科目：
+        <select id="add_course_name" required>
+            <option value="">請選擇科目</option>
+            <option value="01">國文</option>
+            <option value="02">英文</option>
+            <option value="03">數學</option>
+            <option value="04">物理</option>
+            <option value="05">化學</option>
+            <option value="06">生物</option>
+        </select>
+    </label>
+
+    <br><br>
+
+    <label>
+        分數：
+        <input type="add_number" id="add_score" min="0" max="100" required>
+    </label>
+
+    <br><br>
+
+    <button type="submit">新增成績</button>
+</form>
+
+<form id="updateScoreForm">
+
+    <label>
+        學生：
+        <select id="update_student_id" required>
+
+            <option value="">請選擇學生</option>
+            <option value="1">Student1</option>
+            <option value="2">Student2</option>
+            <option value="3">Student3</option>
+            <option value="4">Student4</option>
+
+        </select>
+    </label>
+
+    <br><br>
+
+    <label>
+        科目：
+        <select id="update_course_name" required>
+            <option value="">請選擇科目</option>
+            <option value="01">國文</option>
+            <option value="02">英文</option>
+            <option value="03">數學</option>
+            <option value="04">物理</option>
+            <option value="05">化學</option>
+            <option value="06">生物</option>
+        </select>
+    </label>
+
+    <br><br>
+
+    <label>
+        分數：
+        <input type="add_number" id="update_score" min="0" max="100" required>
+    </label>
+
+    <br><br>
+
+    <button type="submit">更新成績</button>
+</form>
+
+<form id="deleteScoreForm">
+
+    <label>
+        學生：
+        <select id="delete_student_id" required>
+
+            <option value="">請選擇學生</option>
+            <option value="1">Student1</option>
+            <option value="2">Student2</option>
+            <option value="3">Student3</option>
+            <option value="4">Student4</option>
+
+        </select>
+    </label>
+
+    <br><br>
+
+    <label>
+        科目：
+        <select id="delete_course_name" required>
+            <option value="">請選擇科目</option>
+            <option value="01">國文</option>
+            <option value="02">英文</option>
+            <option value="03">數學</option>
+            <option value="04">物理</option>
+            <option value="05">化學</option>
+            <option value="06">生物</option>
+        </select>
+    </label>
+
+    <br><br>
+
+    <button type="submit">刪除成績</button>
+</form>
 
 </div>
 

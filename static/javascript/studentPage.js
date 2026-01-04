@@ -1,16 +1,4 @@
-const queryGradeBtn = document.querySelector("button#query_grade_btn");
-const queryRankingBtn = document.querySelector("button#query_ranking_btn")
-const displayGrades = document.querySelector("p#grade_display");
-
-const gradeDiv = document.querySelector("div#grade_div");
-const rankDiv = document.querySelector("div#avg_and_rank_div");
-
-
-
-queryGradeBtn.addEventListener("click",displayGrade);
-queryRankingBtn.addEventListener("click", displayRanking)
-
-async function displayGrade(){
+async function displayStudentInfo(){
     const token = localStorage.getItem("token");
 
     const res = await fetch("https://www.gradesquery2.x10.mx/scores", {
@@ -18,43 +6,51 @@ async function displayGrade(){
             "Authorization": "Bearer " + token
         }
     });
-
+    const tbody = document.querySelector("#score-table tbody");
     const data = await res.json();
-    console.log(data)
-gradeDiv.innerHTML = "";
+    console.log(data);
 
-    data.forEach(items => {
+    const students = {};
 
-        const infoText = document.createElement("h4");
-        infoText.innerHTML = items.course_name + ": " + items.score;
-        
-        gradeDiv.appendChild(infoText);
-        
-
-    });
-    
-}
-
-async function displayRanking(){
-    const token = localStorage.getItem("token");
-
-    const res = await fetch("https://www.gradesquery2.x10.mx/rank", {
-        headers: { 
-            "Authorization": "Bearer " + token
+    data.forEach(item => {
+        if (!students[item.student_id]) {
+            students[item.student_id] = {
+                class: item.class,
+                student_number: item.class_number,
+                student_name: item.student_name,
+                avg_score: item.average_score,
+                class_rank: item.class_rank,
+                school_rank: item.school_rank,
+                scores: {}
+                
+            };
         }
+        students[item.student_id].scores[item.course_name] = item.score;
+        
     });
 
-    const data = await res.json();
-    console.log(data)
-    rankDiv.innerHTML = "";
+    Object.values(students).forEach(stu => {
+        const tr = document.createElement("tr");
 
-        data.forEach(items => {
+        tr.innerHTML = `
+            <td>${stu.class}</td>
+            <td>${stu.student_number}</td>
+            <td>${stu.student_name}</td>
+            <td>${stu.scores["國文"] ?? ""}</td>
+            <td>${stu.scores["英文"] ?? ""}</td>
+            <td>${stu.scores["數學"] ?? ""}</td>
+            <td>${stu.scores["物理"] ?? ""}</td>
+            <td>${stu.scores["化學"] ?? ""}</td>
+            <td>${stu.scores["生物"] ?? ""}</td>
+            <td>${stu.avg_score}</td>
+            <td>${stu.class_rank}</td>
+            <td>${stu.school_rank}</td>
+          
+        `;
 
-        const infoText = document.createElement("h4");
-        infoText.innerHTML = "平均: "+ items.average_score + "校排: " +items.school_rank + "班排: " + items.class_rank;
-        
-        rankDiv.appendChild(infoText);
-        
-
+        tbody.appendChild(tr);
     });
+
 }
+
+displayStudentInfo();

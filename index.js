@@ -85,13 +85,13 @@ db.get("SELECT * FROM student_login WHERE student_name = ? AND student_password=
 app.get("/scores", authenticateToken, (req, res) => {
     if (req.user.role === "teacher") {
         
-        db.all("SELECT students.student_id, students.student_name, students.class, scores.course_name, scores.course_id, scores.score FROM scores JOIN students ON scores.student_id = students.student_id", (err, rows) => {
+        db.all("SELECT students.student_id, students.student_name, students.class, students.class_number, scores.course_name, scores.score, scores_ranks.average_score, scores_ranks.class_rank, scores_ranks.school_rank FROM students JOIN scores ON scores.student_id = students.student_id JOIN scores_ranks ON students.student_id = scores_ranks.student_id;", (err, rows) => {
             if (err) return res.status(500).json({ message: "查詢失敗" });
             res.json(rows);
         });
     } else {
         
-        db.all("SELECT * FROM scores WHERE student_id = ?", [req.user.student_id], (err, rows) => {
+        db.all("SELECT students.student_id, students.student_name, students.class, students.class_number, scores.course_name, scores.score, scores_ranks.average_score, scores_ranks.class_rank, scores_ranks.school_rank FROM students  LEFT JOIN scores ON scores.student_id = students.student_id LEFT JOIN scores_ranks ON students.student_id = scores_ranks.student_id WHERE students.student_id = ? ORDER BY scores.course_id  ASC; ;", [req.user.student_id], (err, rows) => {
             if (err) return res.status(500).json({ message: "伺服器錯誤" });
             res.json(rows);
         });
@@ -103,6 +103,19 @@ app.get("/rank", authenticateToken, (req, res) => {
 
     db.all(
         "SELECT * FROM scores_ranks WHERE student_id = ?",
+        [student_id],
+        (err, rows) => {
+            if (err) return res.status(500).json({ message: "伺服器錯誤" });
+            res.json(rows);
+        }
+    )
+});
+
+app.get("/studentInfo", authenticateToken, (req, res) => {
+       const student_id = req.user.student_id;
+
+    db.all(
+        "SELECT * FROM students WHERE student_id = ?",
         [student_id],
         (err, rows) => {
             if (err) return res.status(500).json({ message: "伺服器錯誤" });

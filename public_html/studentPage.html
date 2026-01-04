@@ -11,19 +11,35 @@
 <body>
 <div class = "grid-container">
 
+<div class = "grid-item header">
+
+<div id = "header-bg">
+<h1>成績查詢</h1>
+</div>
+
+</div>
+
 <div class = "grid-item main">
 
-
-<div id="input-block">
-
-<button id = "query_grade_btn">查看各科成績</button>
-<button id="query_ranking_btn">查看均分與排名</button>
-
-</div>
-<div class = "grid-item side_main ">
-<div id = "grade_div"></div>
-<div id = "avg_and_rank_div"></div>
-</div>
+<table id="score-table" border="1">
+    <thead>
+        <tr>
+            <th>班級</th>
+            <th>座號</th>
+            <th>姓名</th>
+            <th>國文</th>
+            <th>英文</th>
+            <th>數學</th>
+            <th>物理</th>
+            <th>生物</th>
+            <th>化學</th>
+            <th>平均</th>
+            <th>班排</th>
+            <th>校排</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
 
 </div>
 
