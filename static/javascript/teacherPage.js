@@ -110,9 +110,7 @@ async function displayScoreList(class_name) {
                 student_id: item.student_id,
                 student_number: item.class_number,
                 student_name: item.student_name,
-                avg_score: item.average_score,
-                class_rank: item.class_rank,
-                school_rank: item.school_rank,
+    
                 scores: {}
             };
         }
@@ -135,9 +133,6 @@ async function displayScoreList(class_name) {
             <td>${stu.scores["物理"] ?? ""}</td>
             <td>${stu.scores["化學"] ?? ""}</td>
             <td>${stu.scores["生物"] ?? ""}</td>
-            <td>${stu.avg_score}</td>
-            <td>${stu.class_rank}</td>
-            <td>${stu.school_rank}</td>
         `;
 
         tbody.appendChild(tr);}

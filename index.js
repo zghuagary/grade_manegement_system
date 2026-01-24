@@ -98,32 +98,6 @@ app.get("/scores", authenticateToken, (req, res) => {
     }
 });
 
-app.get("/rank", authenticateToken, (req, res) => {
-    const student_id = req.user.student_id;
-
-    db.all(
-        "SELECT * FROM scores_ranks WHERE student_id = ?",
-        [student_id],
-        (err, rows) => {
-            if (err) return res.status(500).json({ message: "伺服器錯誤" });
-            res.json(rows);
-        }
-    )
-});
-
-app.get("/studentInfo", authenticateToken, (req, res) => {
-       const student_id = req.user.student_id;
-
-    db.all(
-        "SELECT * FROM students WHERE student_id = ?",
-        [student_id],
-        (err, rows) => {
-            if (err) return res.status(500).json({ message: "伺服器錯誤" });
-            res.json(rows);
-        }
-    )
-});
-
 /*Teacher part*/ 
 
 app.post("/scores", authenticateToken, authorizeTeacher, (req, res) => {

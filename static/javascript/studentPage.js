@@ -42,9 +42,7 @@ async function displayStudentInfo(){
             <td>${stu.scores["物理"] ?? ""}</td>
             <td>${stu.scores["化學"] ?? ""}</td>
             <td>${stu.scores["生物"] ?? ""}</td>
-            <td>${stu.avg_score}</td>
-            <td>${stu.class_rank}</td>
-            <td>${stu.school_rank}</td>
+  
           
         `;
 

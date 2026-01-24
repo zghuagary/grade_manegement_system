@@ -33,14 +33,6 @@ CREATE TABLE scores(
     FOREIGN KEY (student_id) REFERENCES students(student_id)
 );
 
-DROP TABLE IF EXISTS scores_ranks;
-CREATE TABLE scores_ranks(
-    student_id INTEGER PRIMARY KEY,         
-    average_score REAL,                     
-    class_rank INTEGER,                     
-    school_rank INTEGER,
-    FOREIGN KEY (student_id) REFERENCES students(student_id)
-);
 
 INSERT INTO student_login(student_name,student_password) VALUES
 ('Student1','12345'),
@@ -87,12 +79,6 @@ INSERT INTO scores (student_id, course_name, course_id, score) VALUES
 (4, '物理', '04', 96),
 (4, '化學', '05', 61),
 (4, '生物', '06', 72);
-
-INSERT INTO scores_ranks (student_id, average_score, class_rank, school_rank) VALUES
-(1, 87.5, 1, 1),
-(2, 86.5, 2, 2),
-(3, 83.5, 3, 3),
-(4, 82.5, 4, 4);
 
 
 
